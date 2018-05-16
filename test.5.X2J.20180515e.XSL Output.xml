@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OUTPUT>
+	<XML><?test-result valid=true?><element xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:test="test-ns" attribute="value" xsi:noNamespaceSchemaLocation="file:///C:/Users/JasonPolis/Desktop/xml-json/test.5.xsd">contents<?debug here I am ?>	<sub-element sub-attribute="sub-value" xsi:type="subtype">sub-contents</sub-element><!-- my final comment--></element></XML><JSON>
+[{"!--":"Transformation from XML to JSON using version Jason Polis 20180515e"}
+,{"?test-result":"valid=true"}
+
+		
+,{"element":[
+	[ 
+	
+	
+{,"xmlns:":""
+,"xmlns:xml":"http://www.w3.org/XML/1998/namespace","xmlns:test":"test-ns","xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance"}
+	,{"attribute":"value"}
+,{"xsi:noNamespaceSchemaLocation":"file:///C:/Users/JasonPolis/Desktop/xml-json/test.5.xsd"}
+]
+	,"contents"
+,{"?debug":"here I am "}
+,"	"
+
+		
+,{"sub-element":[
+	[ 
+	
+	
+{,"xmlns:test":""
+}
+	,{"sub-attribute":"sub-value"}
+,{"xsi:type":"subtype"}
+]
+	,"sub-contents"
+
+	]}
+,{"!--":" my final comment"}
+
+	]}
+
+]
+			</JSON>
+</OUTPUT>
