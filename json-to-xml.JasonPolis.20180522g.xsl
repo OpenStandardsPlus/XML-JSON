@@ -36,7 +36,9 @@
 		<xsl:apply-templates/>
 	</xsl:template>
 	<xsl:template match="array[@key]">
-		<xsl:element name="{@key}">
+		<xsl:variable name="my-prefix" select="fn:substring-before(@key,':')"/>
+		<xsl:variable name="my-namespace" select="ancestor-or-self::array/array/map/string[fn:starts-with(@key,'xmlns:')][$my-prefix = substring-after(@key,':')][1]/text()"/>
+		<xsl:element name="{@key}" namespace="{$my-namespace}">
 			<xsl:apply-templates/>
 		</xsl:element>
 	</xsl:template>
@@ -47,10 +49,13 @@
 			<xsl:choose>
 				<!-- NAMESPACE -->
 				<xsl:when test="@key=''"/>
-				<xsl:when test="@key='xmlns:'">
+				<xsl:when test=".=''">
 					<!-- XSL3 prohibits explicit namespace undeclaration -->
 				</xsl:when>
 				<xsl:when test="@key='xmlns:xml'">
+					<!-- XSL3 prohibits xml namespace declaration -->
+				</xsl:when>
+				<xsl:when test="@key='xmlns:'">
 					<!-- XSL3 prohibits xml namespace declaration -->
 				</xsl:when>
 				<xsl:when test="fn:substring-after(@key,'xmlns:')">
@@ -67,9 +72,10 @@
 						<xsl:when test="fn:contains(@key,':')">
 							<xsl:variable name="my-prefix" select="fn:substring-before(@key,':')"/>
 							<xsl:variable name="my-namespace" select="ancestor-or-self::array/array/map/string[fn:starts-with(@key,'xmlns:')][$my-prefix = substring-after(@key,':')][1]/text()"/>
-<!-- DEBUG for namespace prefix lookup
+							<!-- DEBUG for namespace prefix lookup
 							<xsl:message select="'p='||$my-prefix ||' ns='|| $my-namespace||'.'"/>
--->							<xsl:attribute name="{fn:substring-after(@key,':')}" select="text()" namespace="{$my-namespace}"/>
+-->
+							<xsl:attribute name="{fn:substring-after(@key,':')}" select="text()" namespace="{$my-namespace}"/>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:attribute name="{@key}" select="text()"/>
