@@ -1,0 +1,53 @@
+<!-- Edited to replace {, with {"":"", as parse-json dislikes it.-->
+<json xmlns="">
+[
+	{
+		"!--": "Transformation from XML to JSON using version Jason Polis 20180515e"
+	},
+	{
+		"?test-result": "valid=true"
+	},
+	{
+		"element": [
+			[
+				{"":"",
+					"xmlns:": "",
+					"xmlns:xml": "http://www.w3.org/XML/1998/namespace",
+					"xmlns:test": "test-ns",
+					"xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance"
+				},
+				{
+					"attribute": "value"
+				},
+				{
+					"xsi:noNamespaceSchemaLocation": "file:///C:/Users/JasonPolis/Desktop/xml-json/test.5.xsd"
+				}
+			],
+			"contents",
+			{
+				"?debug": "here I am "
+			},
+			"	",
+			{
+				"sub-element": [
+					[
+						{"":"",
+							"xmlns:test": ""
+						},
+						{
+							"sub-attribute": "sub-value"
+						},
+						{
+							"xsi:type": "subtype"
+						}
+					],
+					"sub-contents"
+				]
+			},
+			{
+				"!--": " my final comment"
+			}
+		]
+	}
+]
+</json>
